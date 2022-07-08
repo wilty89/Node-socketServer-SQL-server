@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Websocket</title>
+    <script src="socket.io/socket.io.js"></script>
+  </head>
+
+  <body>
+    <h1>Mira la consola</h1>
+    <ul>
+      <div id="container"></div>
+    </ul>
+
+    <script>
+      var socket = io.connect("http://localhost:8080", {
+        reconnect: true,
+        forceNew: true,
+      });
+
+      socket.on("mensaje", function (data) {
+        console.log(data);
+      });
+      socket.on("wilber", function (data) {
+        console.log(data);
+      });
+
+      /*
+        setInterval(() => {
+            socket.emit('my other event', { my: 'data' });
+            console.log('se envio mensaje al servidor');
+        }, 15000);
+
+*/   /*
+         const datos =  data.map( (item) => {
+            document.getElementById('container').innerHTML += `<p>${item.id}</p>`
+            })
+            data.map( (item) => {console.log(item.id)})
+*/
+    </script>
+  </body>
+</html>
